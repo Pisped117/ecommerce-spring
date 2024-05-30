@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,8 @@ public class PersonaServiceImpl implements PersonaService{
     @Transactional
     @Override
     public Persona agregarPersona(Persona persona) {
+        //Se pone la fecha del dia actual
+        persona.setFechaCreacion(new Date());
         return repository.save(persona);
     }
 
@@ -52,6 +55,8 @@ public class PersonaServiceImpl implements PersonaService{
         Optional<Persona> personaOptional = repository.findById(id);
         personaOptional.ifPresent(personaDB -> {
             persona.setIdPersona(personaOptional.get().getIdPersona());
+            //Se valida fecha para que no se actualice
+            persona.setFechaCreacion(personaOptional.get().getFechaCreacion());
             repository.save(persona);
         });
         return personaOptional;
