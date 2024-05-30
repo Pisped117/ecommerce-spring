@@ -18,6 +18,4 @@ public class Ciudad {
     private Long idCiudad;
     private String nombre;
 
-    @OneToMany(mappedBy = "idCiudad", cascade = CascadeType.ALL)
-    private List<Persona> personas;
 }

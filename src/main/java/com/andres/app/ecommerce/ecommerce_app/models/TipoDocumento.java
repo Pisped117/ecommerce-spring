@@ -16,16 +16,14 @@ public class TipoDocumento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tipo_doc")
-    private Long idTipoDoc;
+    @Column(name = "id_tipo_documento")
+    private Long idTipoDocumento;
 
     private String nombre;
 
     @Column(length = 4)
     private String sigla;
 
-    @OneToMany(mappedBy = "idTipoDocumento", cascade = CascadeType.ALL)
-    private List<Persona> personas;
 
 
 
