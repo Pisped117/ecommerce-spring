@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +18,10 @@ public class PersonaServiceImpl implements PersonaService{
     @Transactional
     @Override
     public Persona agregarPersona(Persona persona) {
+        String numeroDocumento = repository.validarNumeroDocumento(persona.getNumeroDocumento());
+        if (numeroDocumento != null){
+            return null;
+        }
         return repository.save(persona);
     }
 
@@ -39,10 +42,7 @@ public class PersonaServiceImpl implements PersonaService{
     @Override
     public Optional<Persona> eliminarPersona(Long id) {
         Optional<Persona> personaOptional = repository.findById(id);
-        personaOptional.ifPresent(personaDb -> {
-            repository.deleteById(personaDb.getIdPersona());
-           // System.out.println("Id de la persona:"+ personaDb.getIdPersona());
-        });
+        personaOptional.ifPresent(personaDb -> repository.deleteById(personaDb.getIdPersona()));
         return personaOptional;
 
     }

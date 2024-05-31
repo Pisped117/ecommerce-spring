@@ -18,6 +18,10 @@ public class UsuarioServiceImpl implements UsuarioServicio{
     @Transactional
     @Override
     public Usuario agregarUsuario(Usuario usuario) {
+        String nombreUsuario = repository.validarNombreDeUsuario(usuario.getNombreUsuario());
+        if (nombreUsuario != null){
+            return null;
+        }
         return repository.save(usuario);
     }
 

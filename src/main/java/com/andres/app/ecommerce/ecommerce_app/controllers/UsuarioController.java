@@ -1,5 +1,6 @@
 package com.andres.app.ecommerce.ecommerce_app.controllers;
 
+import com.andres.app.ecommerce.ecommerce_app.exceptions.DatoRepetidoException;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.NoExisteRegistroException;
 import com.andres.app.ecommerce.ecommerce_app.models.Usuario;
 import com.andres.app.ecommerce.ecommerce_app.services.UsuarioServicio;
@@ -20,6 +21,9 @@ public class UsuarioController {
     @Value("${controller.usuario.message}")
     private String MESSAGE_ERROR;
 
+    @Value("${controller.usuario.repetido.message}")
+    private String MESSAGE_USUARIO_EXISTENTE_ERROR;
+
     @Autowired
     UsuarioServicio service;
 
@@ -32,7 +36,11 @@ public class UsuarioController {
         if (result.hasFieldErrors()){
             return error.validation(result);
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.agregarUsuario(usuario));
+        Usuario usuarioValidation = service.agregarUsuario(usuario);
+        if (usuarioValidation == null){
+            throw new DatoRepetidoException(MESSAGE_USUARIO_EXISTENTE_ERROR);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(service.agregarUsuario(usuario));
     }
 
     @GetMapping("/consultar")

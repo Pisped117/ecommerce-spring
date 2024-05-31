@@ -3,8 +3,6 @@ package com.andres.app.ecommerce.ecommerce_app.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "categoria_producto")
 @Getter
@@ -21,6 +19,4 @@ public class CategoriaProducto {
     private String nombreCategoria;
     private String descripcion;
 
-    @OneToMany(mappedBy = "idCategoriaProducto", cascade = CascadeType.ALL)
-    private List<Producto> productos;
 }

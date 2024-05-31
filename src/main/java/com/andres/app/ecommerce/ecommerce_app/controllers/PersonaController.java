@@ -1,5 +1,6 @@
 package com.andres.app.ecommerce.ecommerce_app.controllers;
 
+import com.andres.app.ecommerce.ecommerce_app.exceptions.DatoRepetidoException;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.NoExisteRegistroException;
 import com.andres.app.ecommerce.ecommerce_app.models.Persona;
 import com.andres.app.ecommerce.ecommerce_app.services.PersonaService;
@@ -19,6 +20,10 @@ public class PersonaController {
     @Value("${controller.persona.message}")
     private String MESSAGE_ERROR;
 
+    @Value("${controller.persona.documento.repetido.message}")
+    private String MESSAGE_ERROR_DOCUMENTO;
+
+
     @Autowired
     PersonaService service;
 
@@ -30,7 +35,12 @@ public class PersonaController {
         if (result.hasFieldErrors()){
             return error.validation(result);
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.agregarPersona(persona));
+        Persona personaValidationDocument = service.agregarPersona(persona);
+        //Validacion para que no se repita el numero de documento
+        if (personaValidationDocument == null){
+            throw new DatoRepetidoException(MESSAGE_ERROR_DOCUMENTO);
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(persona);
     }
 
     @GetMapping("/consultar")
