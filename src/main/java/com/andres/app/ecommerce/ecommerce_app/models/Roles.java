@@ -19,7 +19,5 @@ public class Roles {
 
     private String nombre;
 
-    @OneToMany(mappedBy = "idRol", cascade = CascadeType.ALL)
-    private List<Usuario> usuarios;
 
 }

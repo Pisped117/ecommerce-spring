@@ -19,8 +19,6 @@ public class PersonaServiceImpl implements PersonaService{
     @Transactional
     @Override
     public Persona agregarPersona(Persona persona) {
-        //Se pone la fecha del dia actual
-        persona.setFechaCreacion(new Date());
         return repository.save(persona);
     }
 
@@ -43,7 +41,7 @@ public class PersonaServiceImpl implements PersonaService{
         Optional<Persona> personaOptional = repository.findById(id);
         personaOptional.ifPresent(personaDb -> {
             repository.deleteById(personaDb.getIdPersona());
-            System.out.println("Id de la persona:"+ personaDb.getIdPersona());
+           // System.out.println("Id de la persona:"+ personaDb.getIdPersona());
         });
         return personaOptional;
 

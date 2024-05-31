@@ -1,11 +1,11 @@
 package com.andres.app.ecommerce.ecommerce_app.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
@@ -19,20 +19,23 @@ public class Descuentos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDescuento;
 
+    @NotNull(message = "notnull.message")
     private Double porcentajeDescuento;
 
     @ManyToOne
-    @JoinColumn(name = "idTipoDescuento")
-    private TipoDescuento idTipoDescuento;
+    @JoinColumn(name = "idTipoDescuento", nullable = false)
+    private TipoDescuento tipoDescuento;
 
+    //Se dejo flexibilidad en la tabla para manejar los varios tipos de descuentos
+    //Con fechas de inicio y fin en caso de tratarse de un descuento por fechas
+    //Con horas inicio y fin en caso de tratarse de un descuento por horas
     private Date fechaInicio;
     private Date fechaFin;
     private LocalTime horaInicio;
     private LocalTime horaFin;
-    private Boolean estado;
 
-    @OneToMany(mappedBy = "idDescuento", cascade = CascadeType.ALL)
-    private List<Orden> ordenes;
+    @NotNull(message = "notnull.message")
+    private Boolean estado;
 
 
 }

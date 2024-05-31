@@ -19,7 +19,7 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersona;
 
-    @NotBlank
+    @NotBlank(message = "{notblank.message}")
     @Size(min = 1, max = 60)
     private String numeroDocumento;
 
@@ -27,11 +27,11 @@ public class Persona {
     @JoinColumn(name = "idTipoDocumento",nullable = false)
     private TipoDocumento tipoDocumento;
 
-    @NotBlank
+    @NotBlank(message = "{notblank.message}")
     @Size(min = 1, max = 60)
     private String nombre;
 
-    @NotBlank
+    @NotBlank(message = "{notblank.message}")
     @Size(min = 1, max = 60)
     private String apellido;
 
@@ -40,7 +40,7 @@ public class Persona {
     @Email
     private String correo;
 
-    @NotBlank
+    @NotBlank(message = "{notblank.message}")
     @Size(min = 1, max = 60)
     private String direccion;
 

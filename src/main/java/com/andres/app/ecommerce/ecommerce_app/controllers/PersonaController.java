@@ -5,17 +5,19 @@ import com.andres.app.ecommerce.ecommerce_app.models.Persona;
 import com.andres.app.ecommerce.ecommerce_app.services.PersonaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/persona")
 public class PersonaController {
+
+    @Value("${controller.persona.message}")
+    private String MESSAGE_ERROR;
 
     @Autowired
     PersonaService service;
@@ -38,15 +40,13 @@ public class PersonaController {
 
     @GetMapping("/consultar/{id}")
     public ResponseEntity<?> listarPersonaPorId(@PathVariable Long id){
-        //Si la persona no existe se lanza un RunTimeException
-        Persona persona = service.buscarPersonaPorId(id).orElseThrow(() -> new NoExisteRegistroException("¡NO EXISTE LA PERSONA CON EL ID: " + id));
+        Persona persona = service.buscarPersonaPorId(id).orElseThrow(() -> new NoExisteRegistroException(MESSAGE_ERROR + id));
         return ResponseEntity.status(HttpStatus.valueOf(200)).body(persona);
     }
 
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<Persona> actualizarPersona(@Valid @RequestBody Persona persona, BindingResult result, @PathVariable Long id){
-        //Si la persona no existe se lanza un RunTimeException
-        Persona personaDb  = service.actualizarPersona(id, persona).orElseThrow(() -> new NoExisteRegistroException("¡NO EXISTE LA PERSONA CON EL ID: " + id));
+        Persona personaDb  = service.actualizarPersona(id, persona).orElseThrow(() -> new NoExisteRegistroException(MESSAGE_ERROR + id));
         return ResponseEntity.status(HttpStatus.OK).body(personaDb);
 
 
@@ -54,8 +54,7 @@ public class PersonaController {
 
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> eliminarPersona(@PathVariable Long id){
-        //Si la persona no existe se lanza un RunTimeException
-        Persona personaDb  = service.eliminarPersona(id).orElseThrow(() -> new NoExisteRegistroException("¡NO EXISTE LA PERSONA CON EL ID: " + id));
+        Persona personaDb  = service.eliminarPersona(id).orElseThrow(() -> new NoExisteRegistroException(MESSAGE_ERROR + id));
             return ResponseEntity.status(HttpStatus.OK).body(personaDb);
 
     }

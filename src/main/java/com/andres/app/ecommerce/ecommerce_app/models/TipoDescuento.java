@@ -21,6 +21,4 @@ public class TipoDescuento {
     private String nombre;
     private String descripcion;
 
-    @OneToMany(mappedBy = "idTipoDescuento", cascade = CascadeType.ALL)
-    private List<Descuentos> descuentos;
 }
