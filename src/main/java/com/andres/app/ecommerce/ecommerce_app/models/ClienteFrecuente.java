@@ -1,6 +1,7 @@
 package com.andres.app.ecommerce.ecommerce_app.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.Date;
@@ -19,11 +20,16 @@ public class ClienteFrecuente {
     private Long idClienteFrecuente;
 
     @OneToOne
-    @JoinColumn(name = "idCliente")
-    private Cliente idCliente;
+    @JoinColumn(name = "idCliente", nullable = false)
+    private Cliente cliente;
 
+    @NotNull
     private Date fechaInicio;
+
+    @NotNull
     private Date fechaFin;
+
+    @NotNull
     private Boolean estado;
 
 }

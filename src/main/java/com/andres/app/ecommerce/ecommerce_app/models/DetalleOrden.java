@@ -1,6 +1,7 @@
 package com.andres.app.ecommerce.ecommerce_app.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -16,14 +17,17 @@ public class DetalleOrden {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDetalleOrden;
 
+    @NotNull
     private Integer cantidad;
+
+    @NotNull
     private Double subtotal;
 
     @ManyToOne
-    @JoinColumn(name = "idOrden")
-    private Orden idOrden;
+    @JoinColumn(name = "idOrden", nullable = false)
+    private Orden orden;
 
     @ManyToOne
-    @JoinColumn(name = "idProducto")
-    private Producto idProducto;
+    @JoinColumn(name = "idProducto", nullable = false)
+    private Producto producto;
 }

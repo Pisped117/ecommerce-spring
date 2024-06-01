@@ -40,15 +40,8 @@ public class Persona {
     @Email
     private String correo;
 
-    @NotBlank(message = "{notblank.message}")
-    @Size(min = 1, max = 60)
-    private String direccion;
-
     private Date fechaCreacion;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idCiudad",nullable = false)
-    private Ciudad ciudad;
 
 
 }

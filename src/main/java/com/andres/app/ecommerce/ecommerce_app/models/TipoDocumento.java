@@ -1,6 +1,7 @@
 package com.andres.app.ecommerce.ecommerce_app.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class TipoDocumento {
     @Column(name = "id_tipo_documento")
     private Long idTipoDocumento;
 
+    @NotBlank
     private String nombre;
 
     @Column(length = 4)

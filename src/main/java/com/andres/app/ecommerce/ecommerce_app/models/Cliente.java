@@ -18,12 +18,7 @@ public class Cliente {
     private Long idCliente;
 
     @OneToOne
-    @JoinColumn(name = "idPersona")
+    @JoinColumn(name = "idPersona", nullable = false)
     private Persona idPersona;
 
-    @OneToOne(mappedBy = "idCliente", cascade = CascadeType.ALL)
-    private ClienteFrecuente clienteFrecuente;
-
-    @OneToMany(mappedBy = "idCliente", cascade = CascadeType.ALL)
-    private List<Orden> ordenes;
 }

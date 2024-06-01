@@ -1,10 +1,10 @@
 package com.andres.app.ecommerce.ecommerce_app.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
@@ -18,23 +18,22 @@ public class Orden {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOrden;
 
+
     private Date fechaVenta;
+
+    @NotNull
     private Double total;
 
     @ManyToOne
-    @JoinColumn(name = "idDescuento")
-    private Descuentos idDescuento;
+    @JoinColumn(name = "idDescuento", nullable = false)
+    private Descuentos descuento;
+
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario idUsuario;
+    @JoinColumn(name = "idCliente", nullable = false)
+    private Cliente cliente;
 
-    @ManyToOne
-    @JoinColumn(name = "idCliente")
-    private Cliente idCliente;
 
-    @OneToMany(mappedBy = "idOrden", cascade = CascadeType.ALL)
-    private List<DetalleOrden> detalleOrdenes;
 
 
 
