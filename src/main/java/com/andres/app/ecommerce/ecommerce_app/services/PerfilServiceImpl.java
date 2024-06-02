@@ -48,6 +48,8 @@ public class PerfilServiceImpl implements PerfilService{
         Optional<Perfil> perfilOptional = repository.findById(id);
         perfilOptional.ifPresent(perfilDb -> {
             perfil.setIdPerfil(id);
+            //Se iguala la lista de usuarios a la consulta para evitar actualizacion de permisos
+            perfil.setUsuarios(perfilOptional.get().getUsuarios());
             repository.save(perfil);
         });
         return perfilOptional;

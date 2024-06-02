@@ -3,6 +3,7 @@ package com.andres.app.ecommerce.ecommerce_app.services;
 import com.andres.app.ecommerce.ecommerce_app.models.Usuario;
 import com.andres.app.ecommerce.ecommerce_app.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,9 @@ public class UsuarioServiceImpl implements UsuarioServicio{
     @Autowired
     UsuarioRepository repository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Transactional
     @Override
     public Usuario agregarUsuario(Usuario usuario) {
@@ -22,6 +26,8 @@ public class UsuarioServiceImpl implements UsuarioServicio{
         if (nombreUsuario != null){
             return null;
         }
+        String contraseniaEncriptada = passwordEncoder.encode(usuario.getContrasenia());
+        usuario.setContrasenia(contraseniaEncriptada);
         return repository.save(usuario);
     }
 

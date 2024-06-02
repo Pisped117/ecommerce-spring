@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.Date;
 
@@ -28,6 +29,9 @@ public class HandlerException {
 
     @Value("${handler.validacion.dato.existente.message}")
     private String ERROR_DATO_YA_EXISTE;
+
+    @Value("${handler.servicio.inexistente.message}")
+    private String ERROR_SERVICIO_NO_ENCONTRADO;
 
 
     //Excepcion en caso de enviar campos con llaves foraneas vacias
@@ -79,6 +83,19 @@ public class HandlerException {
         Error error = new Error();
         error.setMessage(e.getMessage());
         error.setError(ERROR_DATO_YA_EXISTE);
+        error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        error.setDate(new Date());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    //Se crea excpecion personalizada para validar numero de documento en el registro de personas
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<?> servicioNoEncontradoException(Exception e){
+
+        Error error = new Error();
+        error.setMessage(e.getMessage());
+        error.setError(ERROR_SERVICIO_NO_ENCONTRADO);
         error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         error.setDate(new Date());
 

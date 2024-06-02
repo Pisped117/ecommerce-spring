@@ -19,7 +19,7 @@ public class CategoriaProducto {
     private Long idCategoriaProducto;
 
     @NotBlank
-    @Size(min = 8, max = 60)
+    @Size(min = 2, max = 60)
     private String nombreCategoria;
     private String descripcion;
 

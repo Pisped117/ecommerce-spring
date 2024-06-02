@@ -3,6 +3,7 @@ package com.andres.app.ecommerce.ecommerce_app.services;
 import com.andres.app.ecommerce.ecommerce_app.models.Persona;
 import com.andres.app.ecommerce.ecommerce_app.repositories.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,9 @@ public class PersonaServiceImpl implements PersonaService{
     @Autowired
     PersonaRepository repository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Transactional
     @Override
     public Persona agregarPersona(Persona persona) {
@@ -24,7 +28,7 @@ public class PersonaServiceImpl implements PersonaService{
             return null;
         }
         persona.setFechaCreacion(new Date());
-        System.out.println(persona.getFechaCreacion());
+        //System.out.println(persona.getFechaCreacion());
         return repository.save(persona);
     }
 
