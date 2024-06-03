@@ -22,11 +22,11 @@ public class Perfil {
     private String nombre;
     private String descripcion;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  /*  @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "usuario_perfil", joinColumns = @JoinColumn(name = "id_perfil",
             referencedColumnName = "idPerfil"), inverseJoinColumns = @JoinColumn(name = "id_usuario",
             referencedColumnName = "idUsuario")
     )
-    private List<Usuario> usuarios;
+    private List<Usuario> usuarios;*/
 }

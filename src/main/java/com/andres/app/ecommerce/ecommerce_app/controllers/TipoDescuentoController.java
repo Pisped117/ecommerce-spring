@@ -1,7 +1,7 @@
 package com.andres.app.ecommerce.ecommerce_app.controllers;
 
+import com.andres.app.ecommerce.ecommerce_app.errors.ValidationError;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.NoExisteRegistroException;
-import com.andres.app.ecommerce.ecommerce_app.models.Roles;
 import com.andres.app.ecommerce.ecommerce_app.models.TipoDescuento;
 import com.andres.app.ecommerce.ecommerce_app.services.TipoDescuentoService;
 import jakarta.validation.Valid;

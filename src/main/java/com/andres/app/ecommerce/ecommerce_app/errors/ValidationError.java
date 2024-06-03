@@ -1,4 +1,4 @@
-package com.andres.app.ecommerce.ecommerce_app.controllers;
+package com.andres.app.ecommerce.ecommerce_app.errors;
 
 
 import org.springframework.http.ResponseEntity;

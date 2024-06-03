@@ -1,4 +1,4 @@
-package com.andres.app.ecommerce.ecommerce_app.controllers;
+package com.andres.app.ecommerce.ecommerce_app.handler;
 
 import com.andres.app.ecommerce.ecommerce_app.errors.Error;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.DatoRepetidoException;

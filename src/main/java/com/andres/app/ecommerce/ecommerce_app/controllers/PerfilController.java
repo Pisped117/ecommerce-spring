@@ -1,10 +1,10 @@
 package com.andres.app.ecommerce.ecommerce_app.controllers;
 
+import com.andres.app.ecommerce.ecommerce_app.errors.ValidationError;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.NoExisteRegistroException;
 import com.andres.app.ecommerce.ecommerce_app.models.Perfil;
-import com.andres.app.ecommerce.ecommerce_app.models.Usuario;
 import com.andres.app.ecommerce.ecommerce_app.services.PerfilService;
-import com.andres.app.ecommerce.ecommerce_app.services.UsuarioServicio;
+import com.andres.app.ecommerce.ecommerce_app.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +30,7 @@ public class PerfilController {
     private PerfilService perfilService;
 
     @Autowired
-    private UsuarioServicio usuarioServicio;
+    private UsuarioService usuarioService;
 
     @Autowired
     private ValidationError error;
@@ -43,18 +43,6 @@ public class PerfilController {
         return ResponseEntity.status(HttpStatus.OK).body(perfilService.agregarPerfil(perfil));
     }
 
-
-    //Metodo para asignar perfiles a usuarios
-    @PostMapping("/asignar/usuario/perfil/{idUsuario}/{idPerfil}")
-    public ResponseEntity<Perfil> asignarPerfilAUsuario(@PathVariable Long idUsuario, @PathVariable Long idPerfil){
-        Usuario usuario = usuarioServicio.buscarUsuaropPorId(idUsuario).orElseThrow(() -> new NoExisteRegistroException(MESSAGE_ERROR_USUARIO));
-        Perfil perfil = perfilService.buscarPerfilPorId(idPerfil).orElseThrow(() -> new NoExisteRegistroException(MESSAGE_ERROR_PERFIL));
-        perfil.getUsuarios().add(usuario);
-        Perfil perfilActulizado = perfilService.agregarPerfil(perfil);
-        return ResponseEntity.ok(perfilActulizado);
-
-
-    }
 
     @GetMapping("/consultar")
     public List<Perfil> listarPerfil(){

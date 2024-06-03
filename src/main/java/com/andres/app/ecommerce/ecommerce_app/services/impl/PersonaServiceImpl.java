@@ -1,7 +1,8 @@
-package com.andres.app.ecommerce.ecommerce_app.services;
+package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.Persona;
 import com.andres.app.ecommerce.ecommerce_app.repositories.PersonaRepository;
+import com.andres.app.ecommerce.ecommerce_app.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PersonaServiceImpl implements PersonaService{
+public class PersonaServiceImpl implements PersonaService {
 
     @Autowired
     PersonaRepository repository;

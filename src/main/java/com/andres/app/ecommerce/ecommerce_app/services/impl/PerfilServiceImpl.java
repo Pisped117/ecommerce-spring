@@ -1,8 +1,8 @@
-package com.andres.app.ecommerce.ecommerce_app.services;
+package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.Perfil;
 import com.andres.app.ecommerce.ecommerce_app.repositories.PefilRepository;
-import jakarta.persistence.Table;
+import com.andres.app.ecommerce.ecommerce_app.services.PerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PerfilServiceImpl implements PerfilService{
+public class PerfilServiceImpl implements PerfilService {
 
     @Autowired
     private PefilRepository repository;
@@ -48,8 +48,6 @@ public class PerfilServiceImpl implements PerfilService{
         Optional<Perfil> perfilOptional = repository.findById(id);
         perfilOptional.ifPresent(perfilDb -> {
             perfil.setIdPerfil(id);
-            //Se iguala la lista de usuarios a la consulta para evitar actualizacion de permisos
-            perfil.setUsuarios(perfilOptional.get().getUsuarios());
             repository.save(perfil);
         });
         return perfilOptional;

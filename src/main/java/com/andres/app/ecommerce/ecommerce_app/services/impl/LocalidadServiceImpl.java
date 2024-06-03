@@ -1,7 +1,8 @@
-package com.andres.app.ecommerce.ecommerce_app.services;
+package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.Localidad;
 import com.andres.app.ecommerce.ecommerce_app.repositories.LocalidadRepository;
+import com.andres.app.ecommerce.ecommerce_app.services.LocalidadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LocalidadServiceImpl implements LocalidadService{
+public class LocalidadServiceImpl implements LocalidadService {
 
     @Autowired
     private LocalidadRepository repository;

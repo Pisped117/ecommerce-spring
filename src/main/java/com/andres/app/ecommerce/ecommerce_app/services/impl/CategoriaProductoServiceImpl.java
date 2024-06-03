@@ -1,7 +1,8 @@
-package com.andres.app.ecommerce.ecommerce_app.services;
+package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.CategoriaProducto;
 import com.andres.app.ecommerce.ecommerce_app.repositories.CategoriaProductoRepository;
+import com.andres.app.ecommerce.ecommerce_app.services.CategoriaProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoriaProductoServiceImpl implements CategoriaProductoService{
+public class CategoriaProductoServiceImpl implements CategoriaProductoService {
 
     @Autowired
     private CategoriaProductoRepository repository;

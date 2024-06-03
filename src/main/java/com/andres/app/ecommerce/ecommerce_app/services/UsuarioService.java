@@ -5,7 +5,7 @@ import com.andres.app.ecommerce.ecommerce_app.models.Usuario;
 import java.util.List;
 import java.util.Optional;
 
-public interface UsuarioServicio {
+public interface UsuarioService {
 
     Usuario agregarUsuario (Usuario usuario);
 
@@ -16,4 +16,6 @@ public interface UsuarioServicio {
     Optional<Usuario> eliminarUsuario (Long id);
 
     Optional<Usuario> actualizarUsuario (Long id, Usuario usuario);
+
+    boolean validarNombreUsuario (String nombreUsuario);
 }

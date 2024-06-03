@@ -1,9 +1,8 @@
 package com.andres.app.ecommerce.ecommerce_app.controllers;
 
+import com.andres.app.ecommerce.ecommerce_app.errors.ValidationError;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.NoExisteRegistroException;
-import com.andres.app.ecommerce.ecommerce_app.models.CategoriaProducto;
 import com.andres.app.ecommerce.ecommerce_app.models.Ciudad;
-import com.andres.app.ecommerce.ecommerce_app.services.CategoriaProductoService;
 import com.andres.app.ecommerce.ecommerce_app.services.CiudadService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

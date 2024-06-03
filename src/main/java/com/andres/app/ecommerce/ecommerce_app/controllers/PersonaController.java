@@ -1,5 +1,6 @@
 package com.andres.app.ecommerce.ecommerce_app.controllers;
 
+import com.andres.app.ecommerce.ecommerce_app.errors.ValidationError;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.DatoRepetidoException;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.NoExisteRegistroException;
 import com.andres.app.ecommerce.ecommerce_app.models.Persona;

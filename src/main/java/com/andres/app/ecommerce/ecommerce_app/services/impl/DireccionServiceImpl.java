@@ -1,7 +1,8 @@
-package com.andres.app.ecommerce.ecommerce_app.services;
+package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.Direccion;
 import com.andres.app.ecommerce.ecommerce_app.repositories.DireccionRepository;
+import com.andres.app.ecommerce.ecommerce_app.services.DireccionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DireccionServiceImpl implements DireccionService{
+public class DireccionServiceImpl implements DireccionService {
 
     @Autowired
     private DireccionRepository repository;

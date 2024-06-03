@@ -1,10 +1,9 @@
 package com.andres.app.ecommerce.ecommerce_app.controllers;
 
+import com.andres.app.ecommerce.ecommerce_app.errors.ValidationError;
 import com.andres.app.ecommerce.ecommerce_app.exceptions.NoExisteRegistroException;
 import com.andres.app.ecommerce.ecommerce_app.models.Roles;
-import com.andres.app.ecommerce.ecommerce_app.models.TipoDocumento;
 import com.andres.app.ecommerce.ecommerce_app.services.RolesService;
-import com.andres.app.ecommerce.ecommerce_app.services.TipoDocumentoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

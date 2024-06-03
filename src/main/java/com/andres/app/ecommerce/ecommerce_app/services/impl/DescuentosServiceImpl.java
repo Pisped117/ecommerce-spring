@@ -1,7 +1,8 @@
-package com.andres.app.ecommerce.ecommerce_app.services;
+package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.Descuentos;
 import com.andres.app.ecommerce.ecommerce_app.repositories.DescuentoRepository;
+import com.andres.app.ecommerce.ecommerce_app.services.DescuentosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DescuentosServiceImpl implements DescuentosService{
+public class DescuentosServiceImpl implements DescuentosService {
 
     @Autowired
     DescuentoRepository repository;
