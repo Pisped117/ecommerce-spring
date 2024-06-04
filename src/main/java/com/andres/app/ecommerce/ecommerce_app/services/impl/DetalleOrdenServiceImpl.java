@@ -1,8 +1,10 @@
 package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.DetalleOrden;
+import com.andres.app.ecommerce.ecommerce_app.models.Orden;
 import com.andres.app.ecommerce.ecommerce_app.repositories.DetalleOrdenRepository;
 import com.andres.app.ecommerce.ecommerce_app.services.DetalleOrdenService;
+import com.andres.app.ecommerce.ecommerce_app.services.OrdenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class DetalleOrdenServiceImpl implements DetalleOrdenService {
 
     @Autowired
     private DetalleOrdenRepository repository;
+
+    @Autowired
+    private OrdenService ordenService;
 
 
     @Override
@@ -46,5 +51,10 @@ public class DetalleOrdenServiceImpl implements DetalleOrdenService {
             repository.save(detalleOrden);
         });
         return detalleOrdenOptional;
+    }
+
+    @Override
+    public List<Object[]> listar5ProductosMasVendidos() {
+        return repository.hayarProductosMasVendidos();
     }
 }

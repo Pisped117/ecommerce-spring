@@ -1,0 +1,1601 @@
+{
+	"info": {
+		"_postman_id": "85333877-6c0f-4d5b-8adb-fcaf4eb31fee",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32890255"
+	},
+	"item": [
+		{
+			"name": "GuardarPersona",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroDocumento\": \"1003678424\",\r\n    \"tipoDocumento\": {\r\n        \"idTipoDocumento\" :1\r\n    },\r\n    \"nombre\": \"Juan Sebastian\",\r\n    \"apellido\": \"Pava Julio\",\r\n    \"telefono\": \"3001574360\",\r\n    \"correo\": \"pavajuan@gmail.com\",\r\n    \"usuario\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/persona/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarPersona",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/persona/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarPersona",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"numeroDocumento\": \"12345678\",\r\n        \"tipoDocumento\": {\r\n            \"idTipoDocumento\": 1\r\n        },\r\n        \"nombre\": \"Maria Antonioeta\",\r\n        \"apellido\": \"De las nieves\",\r\n        \"telefono\": \"245187533.\",\r\n        \"correo\": \"mariadenieves@gmail.com\",\r\n        \"direccion\": \"Poblado\",\r\n        \"fechaCreacion\": \"2024-05-30T17:13:26.000+00:00\",\r\n        \"ciudad\": {\r\n            \"idCiudad\": 2\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/persona/actualizar/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"actualizar",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarPersona",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/persona/eliminar/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"eliminar",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreUsuario\": \"julian_garay\",\r\n    \"contrasenia\": \"12345678\",\r\n    \"persona\": {\r\n        \"idPersona\":8\r\n    },\r\n    \"fotoUsuario\": \"C:/planos/fotos/fotomonkey.jpeg\",\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarUsuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhdXJhX2F2aWxhIiwiYXV0aG9yaXRpZXMiOiJbe1wiYXV0aG9yaXR5XCI6XCJST0xFX0FETUlOSVNUUkFET1JcIn1dIiwidXNlcm5hbWUiOiJhdXJhX2F2aWxhIiwiZXhwIjoxNzE3NDQwOTQwLCJpYXQiOjE3MTc0MzczNDB9.GMJXvJbcbCSE7Pn0et-ZRn60LMw0TRCuRfAt_518NDg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/usuario/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarUsuario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreUsuario\": \"dog_player\",\r\n    \"contrasenia\": \"12345689\",\r\n    \"persona\": {\r\n        \"idPersona\": 7\r\n    },\r\n    \"rol\": {\r\n        \"idRol\": 2\r\n    },\r\n    \"fotoUsuario\": \"C:/planos/fotos/fotomonkey.jpeg\",\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario/actualizar/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"actualizar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarUsuario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/usuario/eliminar/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"eliminar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarDescuento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"porcentajeDescuento\":1,\r\n    \"tipoDescuento\":{\r\n        \"idTipoDescuento\":1\r\n    },\r\n    \"fechaInicio\":null,\r\n    \"fechaFin\":null,\r\n    \"horaInicio\":null,\r\n    \"horaFin\":null,\r\n    \"estado\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/descuentos/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"descuentos",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarDescuento",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/descuentos/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"descuentos",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarDescuento",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"porcentajeDescuento\": 0.05,\r\n   \"tipoDescuento\":{\r\n        \"idTipoDescuento\":1\r\n   },\r\n   \"fechaInicio\": null,\r\n   \"fechaFin\": null,\r\n   \"horaInicio\": \"10:00:00\",\r\n   \"horaFin\": \"10:30:00\",\r\n   \"estado\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/descuentos/actualizar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"descuentos",
+						"actualizar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarDescuento",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/descuentos/eliminar/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"descuentos",
+						"eliminar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarProducto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Guantes de Boxeo\",\r\n    \"descripcion\": \"Practica tu deporte con los mejores guantes calidad-precio del mercado\",\r\n    \"precio\":180000,\r\n    \"stock\": 150,\r\n    \"estado\":true,\r\n    \"categoriaProducto\":{\r\n        \"idCategoriaProducto\":5\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/producto/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"producto",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarProducto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/producto/consultar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"producto",
+						"consultar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarProducto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Luces led(Farolas)\",\r\n    \"descripcion\": \"Lleva las mejores luces les para que no sufras cuando conduces de noche\",\r\n    \"precio\":2000000,\r\n    \"stock\": 50,\r\n    \"estado\":true,\r\n    \"categoriaProducto\":{\r\n        \"idCategoriaProducto\":4\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/producto/actualizar/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"producto",
+						"actualizar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarProducto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/producto/eliminar/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"producto",
+						"eliminar",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarOrden",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"total\":800000,\r\n    \"descuento\":{\r\n        \"idDescuento\":1\r\n    },\r\n    \"cliente\":{\r\n        \"idCliente\":1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orden/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orden",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarOrden",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orden/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orden",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarOrden",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"total\":1700000,\r\n    \"descuento\":{\r\n        \"idDescuento\":1\r\n    },\r\n    \"cliente\":{\r\n        \"idCliente\":2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orden/actualizar/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orden",
+						"actualizar",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarOrden",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orden/eliminar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orden",
+						"eliminar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarDireccion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"direccion\":\"Calle # 14 a 22\",\r\n    \"detalle\":\"En el barrio poblado\",\r\n    \"localidad\":{\r\n        \"idLocalidad\":3\r\n    },\r\n    \"cliente\":{\r\n        \"idCliente\":2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/direccion/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"direccion",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarDireccion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/direccion/consultar/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"direccion",
+						"consultar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarDireccion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"direccion\":\"Calle # 144 a 220\",\r\n    \"detalle\":\"En el barrio manrique\",\r\n    \"localidad\":{\r\n        \"idLocalidad\":4\r\n    },\r\n    \"cliente\":{\r\n        \"idCliente\":2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/direccion/actualizar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"direccion",
+						"actualizar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarDireccion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/direccion/eliminar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"direccion",
+						"eliminar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarTipoDocumento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"CEDULA DE CIUDADANIA\",\r\n    \"sigla\":\"CC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tipo/documento/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipo",
+						"documento",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarTipoDocumento",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tipo/documento/consultar/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipo",
+						"documento",
+						"consultar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarTipoDocumento",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"PERSMISO DE ESTANCIA NACIONAL\",\r\n    \"sigla\":\"PDEN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tipo/documento/actualizar/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipo",
+						"documento",
+						"actualizar",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarTipoDocumento",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tipo/documento/eliminar/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipo",
+						"documento",
+						"eliminar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarRol",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"ROL DE PRUEBA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/roles/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"roles",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarRol",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/roles/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"roles",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarRol",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"POSTERIOR A ELIMINAR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/roles/actualizar/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"roles",
+						"actualizar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarRol",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/roles/eliminar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"roles",
+						"eliminar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarTipoDescuento",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAzNjc4NDIzX3VzdWFyaW8iLCJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5JU1RSQURPUlwifV0iLCJ1c2VybmFtZSI6IjEwMDM2Nzg0MjNfdXN1YXJpbyIsImV4cCI6MTcxNzQ3NjQ1MywiaWF0IjoxNzE3NDcyODUzfQ.tjqT7u0oP-c52APBGPUztCPzj8eHv-TI-Aov8uRlMpc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"POR HORA DE COMPRA\",\r\n    \"descripcion\":\"Si el cliente realiza una compra entre las 1AM y las 3AM, tendra un descuento increible\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tipo/descuento/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipo",
+						"descuento",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarTipoDescuento",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tipo/descuento/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipo",
+						"descuento",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarTipoDescuento",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"REGISTRO PARA ELIMINAR EN DELETE\",\r\n    \"descripcion\":\"Creado unicamente para probar y eliminar\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tipo/descuento/actualizar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipo",
+						"descuento",
+						"actualizar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarDescuento",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tipo/descuento/eliminar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipo",
+						"descuento",
+						"eliminar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarCategoriaProducto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreCategoria\":\"DEPORTE\",\r\n    \"descripcion\":\"Tenemos los mejores equipamientos para que practiques tus deportes favoritos!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/categoria/producto/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"producto",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarCategoriaProducto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categoria/producto/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"producto",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarCategoriaProducto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreCategoria\":\"COCINA\",\r\n    \"descripcion\":\"Ecuentra los mejores productos de cocina, a un precio de locura!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/categoria/producto/actualizar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"producto",
+						"actualizar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarCategoriaProducto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categoria/producto/eliminar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"producto",
+						"eliminar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarCiudad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Barranquilla\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ciudad/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ciudad",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarCiudad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ciudad/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ciudad",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarCiudad",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Cartagena\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ciudad/actualizar/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ciudad",
+						"actualizar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarCiudad",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ciudad/eliminar/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ciudad",
+						"eliminar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarLocalidad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Juanchito2\",\r\n    \"ciudad\":{\r\n        \"idCiudad\":3\r\n    }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/localidad/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"localidad",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarLocalidad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/localidad/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"localidad",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarCiudad",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"LocalidadPrueba\",\r\n    \"ciudad\":{\r\n        \"idCiudad\":3\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/localidad/actualizar/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"localidad",
+						"actualizar",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarCiudad",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/localidad/eliminar/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"localidad",
+						"eliminar",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarPerfil",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbmRyZXNfZmVsIiwiYXV0aG9yaXRpZXMiOiJbe1wiYXV0aG9yaXR5XCI6XCJST0xFX1VTVUFSSU9cIn1dIiwidXNlcm5hbWUiOiJBbmRyZXNfZmVsIiwiZXhwIjoxNzE3NDM5ODk3LCJpYXQiOjE3MTc0MzYyOTd9.Zx3GrT9alSd_TANWFuT_w2UrztZ8aTC3zOvuT_n_wsA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"ROLE_ADMINISTRADOR\",\r\n    \"descripcion\":\"Puede administrar toda la aplicacion\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/perfil/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"perfil",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AsignarPerfilUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/usuario/asignar/usuario/perfil/8/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"asignar",
+						"usuario",
+						"perfil",
+						"8",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarPerfil",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/perfil/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"perfil",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarPerfil",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"ADMINSITRADOR-USUARIO\",\r\n    \"descripcion\":\"Puede administrar unicamente los usuarios\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/perfil/actualizar/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"perfil",
+						"actualizar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarPerfil",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/perfil/eliminar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"perfil",
+						"eliminar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginEcommerce",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreUsuario\":\"1003678423_usuario\",\r\n    \"contrasenia\":\"1003678423\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarPersonaUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroDocumento\": \"1003691117\",\r\n    \"tipoDocumento\": {\r\n        \"idTipoDocumento\" :1\r\n    },\r\n    \"nombre\": \"Andres Felipe\",\r\n    \"apellido\": \"Alvarez Avila\",\r\n    \"telefono\": \"3124597846\",\r\n    \"correo\": \"andres@gmail.com\",\r\n    \"cliente\":false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/persona/guardar/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"guardar",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GuardarDetalleOrden",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cantidad\":1,\r\n    \"subtotal\":10000,\r\n    \"orden\":{\r\n        \"idOrden\":1\r\n    },\r\n    \"producto\":{\r\n        \"idProducto\":2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/detalle/orden/guardar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"detalle",
+						"orden",
+						"guardar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarDetalleOrden",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/detalle/orden/consultar/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"detalle",
+						"orden",
+						"consultar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarDetalleOrden",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cantidad\":10,\r\n    \"subtotal\":1500000,\r\n    \"orden\":{\r\n        \"idOrden\":1\r\n    },\r\n    \"producto\":{\r\n        \"idProducto\":1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/detalle/orden/actualizar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"detalle",
+						"orden",
+						"actualizar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarDetallesOrdenes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/detalle/orden/eliminar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"detalle",
+						"orden",
+						"eliminar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReporteClientesFrecuentes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAzNjc4NDIzX3VzdWFyaW8iLCJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5JU1RSQURPUlwifV0iLCJ1c2VybmFtZSI6IjEwMDM2Nzg0MjNfdXN1YXJpbyIsImV4cCI6MTcxNzQ3NjQ1MywiaWF0IjoxNzE3NDcyODUzfQ.tjqT7u0oP-c52APBGPUztCPzj8eHv-TI-Aov8uRlMpc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reportes/clientes/frecuentes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reportes",
+						"clientes",
+						"frecuentes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReporteProductosMasVendidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reportes/productos/mas/vendidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reportes",
+						"productos",
+						"mas",
+						"vendidos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

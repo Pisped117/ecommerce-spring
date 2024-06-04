@@ -24,12 +24,6 @@ public class ClienteFrecuente {
     private Cliente cliente;
 
     @NotNull
-    private Date fechaInicio;
-
-    @NotNull
-    private Date fechaFin;
-
-    @NotNull
     private Boolean estado;
 
 }

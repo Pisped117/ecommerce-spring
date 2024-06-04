@@ -24,6 +24,7 @@ public class OrdenServiceImpl implements OrdenService {
 
     @Override
     public List<Orden> listarOrden() {
+        System.out.println("CLIENTES FRECUENTES: "+ repository.buscarClientesFrecuentes());
         return (List<Orden>) repository.findAll();
     }
 
@@ -49,4 +50,11 @@ public class OrdenServiceImpl implements OrdenService {
         });
         return ordenOptional;
     }
+
+   /* @Override
+    public List<Long> buscarClientesFrecuentes() {
+        List<Long> clientesFrecuentes = repository.buscarClientesFrecuentes();
+        System.out.println(clientesFrecuentes.toString());
+        return clientesFrecuentes;
+    }*/
 }

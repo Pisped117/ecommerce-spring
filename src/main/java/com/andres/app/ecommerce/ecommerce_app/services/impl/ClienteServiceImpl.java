@@ -1,7 +1,10 @@
 package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.Cliente;
+import com.andres.app.ecommerce.ecommerce_app.models.ClienteFrecuente;
+import com.andres.app.ecommerce.ecommerce_app.repositories.ClienteFrecuenteRepository;
 import com.andres.app.ecommerce.ecommerce_app.repositories.ClienteRepository;
+import com.andres.app.ecommerce.ecommerce_app.repositories.OrdenRepository;
 import com.andres.app.ecommerce.ecommerce_app.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +18,6 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private ClienteRepository repository;
-
 
     @Transactional
     @Override

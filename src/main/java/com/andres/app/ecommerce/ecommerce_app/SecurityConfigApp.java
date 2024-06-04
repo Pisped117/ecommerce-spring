@@ -5,6 +5,7 @@ import com.andres.app.ecommerce.ecommerce_app.security.JwtValidationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,11 +36,20 @@ public class SecurityConfigApp {
 
         try {
         return httpSecurity.authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/usuario/**")
-                        .permitAll()
+                        //Indica que solo los administradores pueden acceder al recurso usuario
+                        .requestMatchers("/persona/guardar").permitAll()
+                        .requestMatchers("/**").hasRole("ADMINISTRADOR")
+                        .requestMatchers(HttpMethod.GET,"/categoria/producto/**").hasAnyRole("VENDEDOR")
+                        .requestMatchers("/producto/**").hasAnyRole("VENDEDOR")
+                        .requestMatchers(HttpMethod.GET,"/detalle/orden/**").hasAnyRole("VENDEDOR")
+                        .requestMatchers(HttpMethod.GET,"/orden/**").hasAnyRole("VENDEDOR")
+                        .requestMatchers(HttpMethod.GET,"/descuentos/**").hasAnyRole("VENDEDOR")
+                        .requestMatchers(HttpMethod.GET,"/persona/**").hasAnyRole("CLIENTE")
+                        .requestMatchers(HttpMethod.GET,"/usuario/**").hasAnyRole("CLIENTE")
+                        .requestMatchers(HttpMethod.PUT,"/usuario/**").hasAnyRole("CLIENTE")
+                        .requestMatchers(HttpMethod.GET,"/reportes/**").hasAnyRole("ANALISTA")
                         .requestMatchers("/login").permitAll()
-                        .anyRequest()
-                        .authenticated())
+                        .anyRequest().authenticated())
                         .addFilter(new JwtAuthenticationFilter(this.authenticationManager()))
                         .addFilter(new JwtValidationFilter(this.authenticationManager()))
                         .csrf(config -> config.disable())

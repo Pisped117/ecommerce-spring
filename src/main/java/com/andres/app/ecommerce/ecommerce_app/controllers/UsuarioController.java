@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuario")
@@ -41,7 +42,7 @@ public class UsuarioController {
     @Autowired
     ValidationError error;
 
-    @PostMapping("/guardar")
+   /* @PostMapping("/guardar")
     public ResponseEntity<?> guardarPersona(@Valid @RequestBody Usuario usuario, BindingResult result){
         if (result.hasFieldErrors()){
             return error.validation(result);
@@ -51,15 +52,15 @@ public class UsuarioController {
             throw new DatoRepetidoException(MESSAGE_USUARIO_EXISTENTE_ERROR);
         }
         return ResponseEntity.status(HttpStatus.OK).body(usuarioValidation);
-    }
+    }*/
 
     //Metodo para asignar perfiles a usuarios
     @PostMapping("/asignar/usuario/perfil/{idUsuario}/{idPerfil}")
-    public ResponseEntity<Usuario> asignarPerfilAUsuario(@PathVariable Long idUsuario, @PathVariable Long idPerfil){
+    public ResponseEntity<?> asignarPerfilAUsuario(@PathVariable Long idUsuario, @PathVariable Long idPerfil){
         Usuario usuario = usuarioService.buscarUsuaropPorId(idUsuario).orElseThrow(() -> new NoExisteRegistroException(MESSAGE_ERROR_USUARIO));
         Perfil perfil = perfilService.buscarPerfilPorId(idPerfil).orElseThrow(() -> new NoExisteRegistroException(MESSAGE_ERROR_PERFIL));
         usuario.getPerfiles().add(perfil);
-        Usuario usuarioActualizado = usuarioService.agregarUsuario(usuario);
+        Optional<Usuario> usuarioActualizado = usuarioService.actualizarUsuario(idPerfil, usuario);
         return ResponseEntity.ok(usuarioActualizado);
 
 

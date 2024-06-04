@@ -24,7 +24,7 @@ public class Persona {
     private String numeroDocumento;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idTipoDocumento",nullable = false)
+    @JoinColumn(name = "idTipoDocumento", nullable = false)
     private TipoDocumento tipoDocumento;
 
     @NotBlank(message = "{notblank.message}")
@@ -40,7 +40,12 @@ public class Persona {
     @Email
     private String correo;
 
+    @Transient
+    private boolean cliente;
+
     private Date fechaCreacion;
+
+
 
 
 

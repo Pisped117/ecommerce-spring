@@ -16,4 +16,6 @@ public interface ProductoService {
 
     Optional<Producto> actualizarProdcuto (Long id, Producto producto);
 
+    List<Producto> buscarProductosActivos();
+
 }

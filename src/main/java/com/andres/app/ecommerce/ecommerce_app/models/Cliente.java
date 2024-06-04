@@ -18,7 +18,7 @@ public class Cliente {
     private Long idCliente;
 
     @OneToOne
-    @JoinColumn(name = "idPersona", nullable = false)
-    private Persona idPersona;
+    @JoinColumn(name = "idUsuario", nullable = false)
+    private Usuario usuario;
 
 }

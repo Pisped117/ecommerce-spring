@@ -52,4 +52,9 @@ public class ProductoServiceImpl implements ProductoService {
         });
         return productoOptional;
     }
+
+    @Override
+    public List<Producto> buscarProductosActivos() {
+        return repository.productosActivos(true);
+    }
 }

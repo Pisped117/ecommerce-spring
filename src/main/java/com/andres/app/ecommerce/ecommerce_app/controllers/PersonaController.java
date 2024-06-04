@@ -36,6 +36,21 @@ public class PersonaController {
         if (result.hasFieldErrors()){
             return error.validation(result);
         }
+        //Se obliga a la persona a ser cliente
+        persona.setCliente(true);
+        Persona personaValidationDocument = service.agregarPersona(persona);
+        //Validacion para que no se repita el numero de documento
+        if (personaValidationDocument == null){
+            throw new DatoRepetidoException(MESSAGE_ERROR_DOCUMENTO);
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(persona);
+    }
+
+    @PostMapping("/guardar/usuario")
+    public ResponseEntity<?> guardarPersonaUsuario(@Valid @RequestBody Persona persona, BindingResult result){
+        if (result.hasFieldErrors()){
+            return error.validation(result);
+        }
         Persona personaValidationDocument = service.agregarPersona(persona);
         //Validacion para que no se repita el numero de documento
         if (personaValidationDocument == null){

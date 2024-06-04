@@ -16,4 +16,6 @@ public interface OrdenService {
     Optional<Orden> eliminarOrden (Long id);
 
     Optional<Orden> actualizarOrden (Long id, Orden orden);
+
+   // void buscarClientesFrecuentes();
 }

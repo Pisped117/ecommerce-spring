@@ -11,7 +11,6 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @SpringBootApplication
-
 public class EcommerceAppApplication {
 
 	public static void main(String[] args) {

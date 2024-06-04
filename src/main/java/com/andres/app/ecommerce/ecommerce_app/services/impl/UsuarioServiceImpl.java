@@ -1,7 +1,10 @@
 package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
+import com.andres.app.ecommerce.ecommerce_app.models.Cliente;
 import com.andres.app.ecommerce.ecommerce_app.models.Usuario;
+import com.andres.app.ecommerce.ecommerce_app.repositories.ClienteRepository;
 import com.andres.app.ecommerce.ecommerce_app.repositories.UsuarioRepository;
+import com.andres.app.ecommerce.ecommerce_app.services.ClienteService;
 import com.andres.app.ecommerce.ecommerce_app.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,18 +21,21 @@ public class UsuarioServiceImpl implements UsuarioService {
     UsuarioRepository repository;
 
     @Autowired
+    ClienteRepository clienteRepository;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     @Transactional
     @Override
-    public Usuario agregarUsuario(Usuario usuario) {
-        boolean validarNombreDeUsuario = repository.existsByNombreUsuario(usuario.getNombreUsuario());
-        System.out.println(validarNombreDeUsuario);
-        if (validarNombreDeUsuario){
-            return null;
-        }
+    public void agregarUsuario(Usuario usuario, boolean isCliente) {
         usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
-        return repository.save(usuario);
+        Usuario usuarioConfirmacion = repository.save(usuario);
+        if (isCliente){
+            Cliente cliente = new Cliente();
+            cliente.setUsuario(usuarioConfirmacion);
+            clienteRepository.save(cliente);
+        }
     }
 
     @Transactional(readOnly = true)
@@ -57,9 +63,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Optional<Usuario> actualizarUsuario(Long id, Usuario usuario) {
         Optional<Usuario> usuarioOptional = repository.findById(id);
         usuarioOptional.ifPresent(usuarioDb -> {
-            //Se iguala la lista de perfiles a la consulta para evitar actualizacion de permisos
-            usuario.setPerfiles(usuarioOptional.get().getPerfiles());
-            usuario.setIdUsuario(usuarioOptional.get().getIdUsuario());
             repository.save(usuario);
         });
         return usuarioOptional;

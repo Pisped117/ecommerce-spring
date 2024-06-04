@@ -34,12 +34,8 @@ public class Usuario {
     private String contrasenia;
 
     @OneToOne
-    @JoinColumn(name = "idPersona")
+    @JoinColumn(name = "idPersona", nullable = false)
     private Persona persona;
-
-    @ManyToOne
-    @JoinColumn(name = "idRol")
-    private Roles rol;
 
     private String fotoUsuario;
 
@@ -53,6 +49,7 @@ public class Usuario {
             referencedColumnName = "idPerfil")
     )
     private List<Perfil> perfiles;
+
 
     public boolean isEnabled(){
         return estado;

@@ -12,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/orden")
@@ -61,4 +63,9 @@ public class OrdenController {
         return ResponseEntity.status(HttpStatus.OK).body(orden);
 
     }
+
+  /*  @GetMapping("/clientes/frecuentes")
+    public List<Long> encontrarClientesFrecuentes(){
+        return service.buscarClientesFrecuentes();
+    }*/
 }

@@ -1,8 +1,11 @@
 package com.andres.app.ecommerce.ecommerce_app.services.impl;
 
 import com.andres.app.ecommerce.ecommerce_app.models.Persona;
+import com.andres.app.ecommerce.ecommerce_app.models.Usuario;
+import com.andres.app.ecommerce.ecommerce_app.repositories.ClienteRepository;
 import com.andres.app.ecommerce.ecommerce_app.repositories.PersonaRepository;
 import com.andres.app.ecommerce.ecommerce_app.services.PersonaService;
+import com.andres.app.ecommerce.ecommerce_app.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,7 +22,7 @@ public class PersonaServiceImpl implements PersonaService {
     PersonaRepository repository;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    UsuarioService usuarioService;
 
     @Transactional
     @Override
@@ -29,8 +32,17 @@ public class PersonaServiceImpl implements PersonaService {
             return null;
         }
         persona.setFechaCreacion(new Date());
-        //System.out.println(persona.getFechaCreacion());
-        return repository.save(persona);
+        Persona personaConfirmation = repository.save(persona);
+
+        Usuario usuario = new Usuario();
+        usuario.setNombreUsuario(personaConfirmation.getNumeroDocumento() +"_usuario");
+        usuario.setContrasenia(persona.getNumeroDocumento());
+        usuario.setEstado(true);
+        usuario.setPersona(personaConfirmation);
+
+        usuarioService.agregarUsuario(usuario, persona.isCliente());
+
+        return personaConfirmation;
     }
 
     @Transactional(readOnly = true)

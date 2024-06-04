@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface UsuarioService {
 
-    Usuario agregarUsuario (Usuario usuario);
+    void agregarUsuario (Usuario usuario, boolean isCliente);
 
     List<Usuario> listarUsuarios ();
 

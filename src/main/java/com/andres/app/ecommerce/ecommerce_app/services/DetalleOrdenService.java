@@ -16,4 +16,6 @@ public interface DetalleOrdenService {
     Optional<DetalleOrden> eliminarDetalleOrden(Long id);
 
     Optional<DetalleOrden> actualizarDetalleOrden (Long id, DetalleOrden detalleOrden);
+
+    List<Object[]> listar5ProductosMasVendidos();
 }

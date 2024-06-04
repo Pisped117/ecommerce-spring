@@ -1,5 +1,6 @@
 package com.andres.app.ecommerce.ecommerce_app.services;
 
+import com.andres.app.ecommerce.ecommerce_app.models.Cliente;
 import com.andres.app.ecommerce.ecommerce_app.models.ClienteFrecuente;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.Optional;
 
 public interface ClienteFrecuenteService {
 
-    ClienteFrecuente agregarClienteFrecuente (ClienteFrecuente clienteFrecuente);
+    void agregarClienteFrecuente (List<Cliente> clientes);
 
     List<ClienteFrecuente> listarClienteFrecuente();
 
